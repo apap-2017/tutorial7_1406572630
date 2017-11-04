@@ -19,5 +19,8 @@ public interface StudentService
 
     
     void updateStudent (StudentModel student);
+
+
+	void addCourse(String npm, String idCourse);
     
 }
