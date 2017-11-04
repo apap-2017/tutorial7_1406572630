@@ -7,14 +7,19 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.tutorial07.model.CourseModel;
 import com.example.tutorial07.model.StudentModel;
 import com.example.tutorial07.service.StudentService;
+import com.example.tutorial07.service.CourseService;
 
 @RestController
 @RequestMapping("/rest")
 public class StudentRestController {
 	@Autowired
 	StudentService studentService;
+	
+	@Autowired
+	CourseService courseService;
 
 	@RequestMapping("/student/view/{npm}")
 	public StudentModel view(@PathVariable(value = "npm") String npm) {
@@ -26,5 +31,11 @@ public class StudentRestController {
 	public List<StudentModel> viewall () {
 		List<StudentModel> students = studentService.selectAllStudents ();
         return students;
+	}
+	
+	@RequestMapping ( "/course/view/{id}")
+	public CourseModel viewCourse ( @PathVariable ( value = "id" ) String id_course) {
+			CourseModel course = courseService.selectCourse(id_course);
+		return course;
 	}
 }

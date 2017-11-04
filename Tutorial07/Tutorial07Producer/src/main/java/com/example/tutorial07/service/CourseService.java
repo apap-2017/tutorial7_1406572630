@@ -19,4 +19,6 @@ public class CourseService {
     	log.info ("select course by ID {}", id_course);
         return courseMapper.selectCourse (id_course);
     }
+	
+	
 }
