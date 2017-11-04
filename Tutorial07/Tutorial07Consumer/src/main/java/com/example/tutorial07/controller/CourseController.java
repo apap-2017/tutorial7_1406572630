@@ -1,5 +1,7 @@
 package com.example.tutorial07.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.tutorial07.model.CourseModel;
+import com.example.tutorial07.model.StudentModel;
 import com.example.tutorial07.service.CourseService;
 
 @Controller
@@ -29,4 +32,12 @@ public class CourseController {
 	        }
 	    }
    
+	 @RequestMapping("/course/viewall")
+	    public String viewallCourse (Model model)
+	    {
+	        List<CourseModel> courses = courseDAO.selectAllCourses ();
+	        model.addAttribute ("courses", courses);
+	        model.addAttribute("title", "Lihat Semua Course");
+	        return "courses";
+	    }
 }

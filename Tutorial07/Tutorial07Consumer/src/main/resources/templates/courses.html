@@ -1,0 +1,26 @@
+
+<title>Daftar Course</title>
+<div th:replace="fragments/header"></div>
+<br />
+<div class="container">
+	<h3>All Courses</h3>
+	<br />
+
+	<div th:each="course,iterationStatus: ${courses}">
+            <h3 th:text="'No. ' + ${iterationStatus.count}">No. 1</h3>
+	       	<h3 th:text="'Id course = ' + ${course.id_course}">Student NPM</h3>
+	       	<h3 th:text="'Name = ' + ${course.name}">Student Name</h3>
+	       	<h3 th:text="'Credit = ' + ${course.credits}">Student GPA</h3>
+
+	       	<h3>Mahasiswa yang mengambil</h3>  	
+      		<ul th:each="student,iterationStatus: ${course.students}">
+      			<li th:text="${student.npm} + '-' + ${student.name} " >
+      				Nama kuliah-X sks
+      			</li>
+      		</ul>
+       	</div>
+
+</div>
+<div th:replace="fragments/footer"></div>
+
+

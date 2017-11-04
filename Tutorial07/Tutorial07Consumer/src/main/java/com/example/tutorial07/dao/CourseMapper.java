@@ -31,4 +31,13 @@ public interface CourseMapper {
     		"where studentcourse.id_course=#{id_course} " + 
     		"AND student.npm=studentcourse.npm AND course.id_course=studentcourse.id_course")
     List <StudentModel> selectCourseById (@Param("id_course") String id_course );
+    
+    @Select("select id_course, name, credits from course")
+    @Results(value = {
+    		@Result(property="id_course", column="id_course"),
+    		@Result(property="name", column="name"),
+    		@Result(property="credits", column="credits"),
+    		@Result(property="students", column = "id_course")
+    	})
+    List<CourseModel> selectAllCourses ();
 }

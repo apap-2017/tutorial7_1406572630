@@ -34,8 +34,15 @@ public class StudentRestController {
 	}
 	
 	@RequestMapping ( "/course/view/{id}")
-	public CourseModel viewCourse ( @PathVariable ( value = "id" ) String id_course) {
-			CourseModel course = courseService.selectCourse(id_course);
+	public CourseModel viewCourse ( @PathVariable ( value = "id" ) String id) {
+			CourseModel course = courseService.selectCourse(id);
 		return course;
 	}
+	
+	@RequestMapping ( "/course/viewall")
+	public List<CourseModel> viewAllCourses() {
+		List<CourseModel> courses = courseService.selectAllCourses();
+        return courses;
+	}
+	
 }

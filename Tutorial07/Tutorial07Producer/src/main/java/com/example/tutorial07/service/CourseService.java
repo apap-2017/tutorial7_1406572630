@@ -1,5 +1,7 @@
 package com.example.tutorial07.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,5 +22,9 @@ public class CourseService {
         return courseMapper.selectCourse (id_course);
     }
 	
-	
+	public List<CourseModel> selectAllCourses ()
+    {
+        log.info ("select all courses");
+        return courseMapper.selectAllCourses();
+    }
 }
